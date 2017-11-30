@@ -37,6 +37,6 @@ for i = 1:N;
     Ph1 = [Ph1 Ph_ij]; % vector
 %     end % if
     end
-    Ph = [Ph; Ph1];
+     = [];
 end
 end

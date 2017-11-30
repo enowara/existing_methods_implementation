@@ -10,13 +10,15 @@ function Entr = entropy_cross_ROIs(Sj, N)
 % from Wang et al. 2015
 
 % n = 1;
-Entr = [];
+Entr = []; % should be N x N matrix
 % for n = 1:N-1
 for i = 1:N;
+    Entr1 = [];
+
     for j = i:N; % figure out how to select different regions
-    if i == j
-        continue
-    else 
+%     if i == j
+%         continue
+%     else 
         
     % generate C(N,2) combinations
     s_i = Sj(:,i);
@@ -32,9 +34,10 @@ for i = 1:N;
     NCC = NCC1/NCC2;
 
     Entr_ij = sum(NCC.*log(NCC))/(log(300-30)); % frequency range: 0.5 - 5 Hz, 30- 300 bpm
-    Entr = [Entr Entr_ij]; % vector
-    end
-    end
+    Entr1 = [Entr1 Entr_ij]; % vector
+%     end % if 
+    end 
+    Entr = [Entr; Entr1];
 end
 end
 
